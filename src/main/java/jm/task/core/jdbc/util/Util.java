@@ -4,12 +4,12 @@ import java.sql.*;
 
 public class Util {
     // реализуйте настройку соеденения с БД
-    private String url = "jdbc:mysql://localhost:3306/user";
-    private String username = "root";
-    private String password = "Moscow-Minsk86";
+    private static String url = "jdbc:mysql://localhost:3306/user";
+    private static String username = "root";
+    private static String password = "Moscow-Minsk86";
     private Connection connection;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection = null;
 
         try {
