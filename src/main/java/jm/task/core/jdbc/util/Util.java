@@ -1,21 +1,22 @@
 package jm.task.core.jdbc.util;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class Util {
-    // реализуйте настройку соеденения с БД
-    private static String url = "jdbc:mysql://localhost:3306/user";
-    private static String username = "root";
-    private static String password = "Moscow-Minsk86";
-    private Connection connection;
+    private static final String Connection_Url = "jdbc:mysql://localhost:3306/test?" +
+            "&serverTimeZone=Europe/Moscow&useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String User = "root";
+    private static final String Password = "admin";
 
     public static Connection getConnection() {
+
         Connection connection = null;
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(url, username, password);
-        } catch (SQLException | ClassNotFoundException e) {
+        try
+        {
+            connection = DriverManager.getConnection( Connection_Url,User,Password);
+            connection.setAutoCommit(false);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return connection;
